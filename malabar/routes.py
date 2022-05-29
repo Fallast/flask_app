@@ -1,5 +1,4 @@
 import flask_resize
-from PIL import Image
 from malabar import (
         app,
         db,
@@ -157,7 +156,7 @@ def logout():
     logout_user()
     return redirect(url_for('home'))
 
-print(app.root_path)
+# print(app.root_path)
 
 # @app.route("/chart")
 # def chart():

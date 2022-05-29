@@ -20,5 +20,22 @@ login_manager.login_message_category = 'info'
 
 from malabar import routes
 
+import os
+from os.path import *
+from PIL import Image
+
 # TODO: separar archivos en /product_pics agregar versiones de ellos de baja y
 # maxima resolucion con pillow, probe con flask_resize y no anduvo nada
+rel_path1 = "static/product_pics/"
+rel_path2 = "static/product_pics_home/"
+abs_product_pics_path = os.path.join(app.root_path, rel_path1)
+abs_product_pics_home_path = os.path.join(app.root_path, rel_path2)
+product_pics = [i for i in os.listdir(abs_product_pics_path)]
+product_pics_home = [i for i in os.listdir(abs_product_pics_home_path)]
+for i in product_pics:
+    if(i not in product_pics_home):
+        img = Image.open(abs_product_pics_path + i)
+        img.thumbnail((380,380))
+        img.save(abs_product_pics_home_path + i)
+
+print(product_pics)
