@@ -1,0 +1,53 @@
+{%extends 'layout.html'%}
+
+{%block content%}
+
+
+<div class="row">
+	<div class="col">
+		<input id="busqueda" type="text" name=par class="form-control" placeholder="type something">
+		<h1>jquery example</h1>
+		<p>
+		<input type=text size=5 name=a> +
+		<input type=text size=5 name=b> =
+		<span id=result>?</span>
+		<p>
+		<a href=# id=calculate>calculate server side</a>
+
+	</div>
+	<div class="col">
+		<p id=pres></p>
+		<h2>{{name}}</h2>
+		<h2>{{surname}}</h2>
+	</div>
+</div>
+<script>
+	$.get("{{url_for('about')}}", {name:"John", surname:"Doe"});
+	$(function() {
+			$('a#calculate').bind('click', function() {
+					$.getJSON($SCRIPT_ROOT + '/_add_numbers', {
+							a: $('input[name="a"]').val(),
+							b: $('input[name="b"]').val()
+						}, function(data) {
+								$("#result").text(data.results);
+							});
+					return false;
+				});
+		});
+
+	$(document).on("input",'#busqueda' ,function() {
+			buscar = $("#busqueda").val()
+			$.ajax({
+					method:"post",
+					url:"/_str",
+					data:{text:buscar},
+					success:function(res){
+							$.each(res, function(i, item){
+									console.log(item.thumbnail);
+								})
+						}
+				})
+		});
+</script>
+
+{%endblock%}

@@ -1,0 +1,28 @@
+{%extends "layout.html"%}
+
+{%block content%}
+
+<div id="results" class="row">
+   {% for item in products %}
+   <div class="col-md-4 p-0 m-0 text-center product-col">
+      <div class="efecto-container">
+         <a href={{url_for('product', item = item)}}>
+            <img class="img-fluid" style="max-width:100%; max-height:380px;" src="{{url_for('static', filename='product_pics/' + item.thumbnail) | resize('380x380', format='jpg')}}" alt="">
+         </a>
+         <div class="overlay" onclick="location.href='{{url_for('product', item = item.id)}}'" style="cursor:pointer;"></div>
+      </div>
+      <a class="product-title" href="{{url_for('product', item = item.id)}}">{{item.title}}
+         <br>
+         {{item.price}}
+      </a>
+   </div>
+   {%endfor%}
+</div>
+
+<script>
+    var prod_categories = {{categories | tojson}};
+</script>
+
+<script type="text/javascript" src="{{url_for('static', filename='homesearch.js')}}"></script>
+
+{%endblock content%}

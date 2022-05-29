@@ -1,0 +1,81 @@
+{%extends "layout.html"%}
+{%block content%}
+<div id="container-reg" class="container-sm">
+   <div class="log-container  p-3">
+      <form style="margin-bottom:0" method="POST" action="">
+         {{form.hidden_tag()}}
+         <fieldset class="form-group">
+            <legend class="border-bottom mb-2">Registrese</legend>
+            <div class=" p-2">
+               <small class="">
+                  Ya tienes una cuenta? 
+                  <a href="{{url_for('login')}}">Inicie Sesion</a>
+               </small>
+            </div>
+            <div class="form-group">
+					<div class="form-floating mb-1">
+						{% if form.username.errors%}
+						{{form.username(class="form-control is-invalid")}}
+						<div class="invalid-feedback">
+							{% for error in form.username.errors %}
+							<span>{{error}}</span>
+							{%endfor%}
+						</div>
+						{%else%}
+						{{form.username(class="form-control", placeholder="")}}
+						{%endif%}
+						{{form.username.label}}
+					</div>
+				</div>
+            <div class="form-group">
+					<div class="form-floating mb-1">
+						{% if form.email.errors%}
+						{{form.email(class="form-control is-invalid")}}
+						<div class="invalid-feedback">
+							{% for error in form.email.errors %}
+							<span>{{error}}</span>
+							{%endfor%}
+						</div>
+						{%else%}
+						{{form.email(class="form-control", placeholder="")}}
+						{%endif%}
+						{{form.email.label}}
+					</div>
+            </div>
+            <div class="form-group">
+					<div class="form-floating mb-1">
+               {% if form.password.errors%}
+               {{form.password(class="form-control-label is-invalid")}}
+               <div class="invalid-feedback">
+                  {% for error in form.password.errors %}
+                  <span>{{error}}</span>
+                  {%endfor%}
+               </div>
+               {%else%}
+               {{form.password(class="form-control", placeholder="")}}
+               {%endif%}
+               {{form.password.label}}
+					</div>
+            </div>
+            <div class="form-group">
+					<div class="form-floating mb-1">
+               {% if form.confirm_password.errors%}
+               {{form.confirm_password(class="form-control is-invalid", placeholder="Reingrese la Contraseña")}}
+               <div class="invalid-feedback">
+                  {% for error in form.confirm_password.errors %}
+                  <span>{{error}}</span>
+                  {%endfor%}
+               </div>
+               {%else%}
+               {{form.confirm_password(class="form-control", placeholder="")}}
+               {%endif%}
+               {{form.confirm_password.label}}
+					</div>
+            </div>
+         </fieldset>
+         <div class="form-group">
+            {{form.submit(class="btn btn-outline-success w-100")}}
+         </div>
+   </div>
+</div>
+{%endblock content%}

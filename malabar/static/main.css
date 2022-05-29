@@ -1,0 +1,151 @@
+root { scroll-behavior: auto;  }
+.scrolled-down{
+     transform:translateY(-100%); transition: all 0.3s ease-in-out;
+     
+}
+
+.navbar-toggler:focus,
+.navbar-toggler-icon:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+textarea:hover, 
+input:hover, 
+textarea:active, 
+input:active, 
+textarea:focus, 
+input:focus,
+button:focus,
+button:active,
+button:hover,
+label:focus,
+.btn:active,
+.btn.active
+{
+    outline:0px !important;
+    -webkit-appearance:none;
+    box-shadow: none !important;
+}
+
+.image-container{
+   opacity:1;
+}
+
+#container-reg{
+	max-width:500px;
+}
+
+.form-group{
+	padding-bottom:10px;
+}
+
+.navbar{
+	/*-webkit-transition: background-color 0.5s ease-out;*/
+	/*-moz-transition: background-color 0.5s ease-out;*/
+	/*-o-transition: background-color 0.5s ease-out;*/
+	/*transition: background-color 0.5s ease-out;*/
+}
+
+.navbar{
+   --bs-bg-opacity: .89;
+   background-color: rgba(255, 255, 255, var(--bs-bg-opacity)) !important;
+}
+
+.navbar:hover{
+   --bs-bg-opacity: .97;
+   background-color: rgba(255, 255, 255, var(--bs-bg-opacity)) !important;
+   color:white !important;
+}
+
+.nav-link:hover{
+   color:black !important;
+}
+
+.form-control{
+   --bs-bg-opacity: 0;
+   background-color: rgba(255, 255, 255, var(--bs-bg-opacity)) !important;
+}
+
+.dropdown-menu{
+   --bs-bg-opacity: .9;
+   background-color: rgba(255, 255, 255, var(--bs-bg-opacity)) !important;
+}
+
+ul > .nav-link:hover{
+   color:black !important;
+	background-color:red !important;
+}
+
+
+.hidden{
+   opacity:0;
+}
+
+#menu-icon{
+   position:absolute;
+   opacity:1;
+   transition:opacity 0.5s linear;
+}
+
+/*.navbar-toggler{*/
+   /*width:20px;*/
+   /*height:20px;*/
+   /*position:relative;*/
+   /*transition: .5s ease-in-out;*/
+/*}*/
+
+/*.navbar-toggler,*/
+/*.navbar-toggler:focus,*/
+/*.navbar-toggler:active,*/
+/*.navbar-toggler-icon:focus{*/
+   /*outline:none;*/
+   /*box-shadow:none;*/
+   /*border:0;*/
+/*}*/
+
+
+/*.navbar-toggler span{*/
+   /*margin:0;*/
+   /*padding:0;*/
+/*}*/
+
+/*.toggler-icon{*/
+   /*display:block;*/
+   /*position:absolute;*/
+   /*height:3px;*/
+   /*width:100%;*/
+   /*background:#d3531a;*/
+   /*border-radius:1px;*/
+   /*opacity:1;*/
+   /*left:0;*/
+   /*transform:rotate(0deg);*/
+   /*transition:.25 ease-in-out;*/
+/*}*/
+
+.scrolled-up{
+     transform:translateY(0); transition: all 0.3s ease-in-out;
+     
+}
+
+.efecto-container{
+   position: relative;
+   width: 100%;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .2s ease;
+  background-color: white;
+}
+
+.efecto-container:hover .overlay {
+  opacity: .5;
+}

@@ -1,0 +1,51 @@
+{%extends "layout.html"%}
+
+{%block content%}
+<div class="content-section">
+<div id="container-reg" class="content-section">
+   <div class="log-container  p-3">
+      <form style="margin-bottom:0" method="POST" action="">
+         {{form.hidden_tag()}}
+         <fieldset class="form-group">
+            <legend class="border-bottom mb-2">Info de la Cuenta</legend>
+            <div class="form-group">
+					<div class="form-floating mb-1">
+						{% if form.username.errors%}
+						{{form.username(class="form-control is-invalid")}}
+						<div class="invalid-feedback">
+							{% for error in form.username.errors %}
+							<span>{{error}}</span>
+							{%endfor%}
+						</div>
+						{%else%}
+						{{form.username(class="form-control", placeholder="", 
+                                             value=current_user.username)}}
+						{%endif%}
+						{{form.username.label}}
+					</div>
+				</div>
+            <div class="form-group">
+					<div class="form-floating mb-1">
+						{% if form.email.errors%}
+						{{form.email(class="form-control is-invalid")}}
+						<div class="invalid-feedback">
+							{% for error in form.email.errors %}
+							<span>{{error}}</span>
+							{%endfor%}
+						</div>
+						{%else%}
+                  {{form.email(class="form-control", placeholder="",
+                  value=current_user.email)}}
+						{%endif%}
+						{{form.email.label}}
+					</div>
+            </div>
+            
+         </fieldset>
+         <div class="form-group">
+            {{form.submit(class="btn btn-outline-success w-100")}}
+         </div>
+   </div>
+</div>
+</div>
+{%endblock content%}
