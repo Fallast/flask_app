@@ -19,3 +19,6 @@ login_manager.login_view = 'login'
 login_manager.login_message_category = 'info'
 
 from malabar import routes
+
+# TODO: separar archivos en /product_pics agregar versiones de ellos de baja y
+# maxima resolucion con pillow, probe con flask_resize y no anduvo nada
