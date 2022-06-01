@@ -2,7 +2,6 @@ import flask_resize
 from malabar import (
         app,
         db,
-        resize,
         bcrypt,
         ma
         )
@@ -52,7 +51,6 @@ def home():
     products = Product.query.order_by(Product.id.desc()).all()
     prod_schema = ProductSchema(many=True)
     categories = [x.categories for x in products]
-    print(categories)
     return render_template('home.html', title='Home', products=products, categories=categories)
 
 @app.route("/_search")

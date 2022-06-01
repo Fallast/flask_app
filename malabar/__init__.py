@@ -3,7 +3,6 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from flask_marshmallow import Marshmallow
-import flask_resize
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '73850c924bfa0ca5993272f5565c3ee7e5151d3c21c825d889038a7694bfd8d1'
@@ -13,7 +12,6 @@ app.config['RESIZE_ROOT'] = '/home/batman/projects/full/malabar/malabar/static/p
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
 bcrypt = Bcrypt(app)
-resize = flask_resize.Resize(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 login_manager.login_message_category = 'info'
@@ -26,16 +24,15 @@ from PIL import Image
 
 # TODO: separar archivos en /product_pics agregar versiones de ellos de baja y
 # maxima resolucion con pillow, probe con flask_resize y no anduvo nada
-rel_path1 = "static/product_pics/"
-rel_path2 = "static/product_pics_home/"
-abs_product_pics_path = os.path.join(app.root_path, rel_path1)
-abs_product_pics_home_path = os.path.join(app.root_path, rel_path2)
+
+relative_path1 = "static/product_pics/"
+relative_path2 = "static/product_pics_home/"
+abs_product_pics_path = os.path.join(app.root_path, relative_path1)
+abs_product_pics_home_path = os.path.join(app.root_path, relative_path2)
 product_pics = [i for i in os.listdir(abs_product_pics_path)]
 product_pics_home = [i for i in os.listdir(abs_product_pics_home_path)]
 for i in product_pics:
     if(i not in product_pics_home):
         img = Image.open(abs_product_pics_path + i)
-        img.thumbnail((380,380))
+        img.thumbnail((500,500))
         img.save(abs_product_pics_home_path + i)
-
-print(product_pics)

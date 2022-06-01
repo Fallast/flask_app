@@ -11,6 +11,8 @@ class User(db.Model, UserMixin):
 	username = db.Column(db.String(20), unique=True, nullable=False)
 	email = db.Column(db.String(40), unique=True, nullable=False)
 	password = db.Column(db.String(60), nullable=False)
+	# TODO:
+		# relacion bidireccinoal con productos
 
 	def __repr__(self):
 		return f"User('{self.username}', '{self.email}', '{self.password}')"

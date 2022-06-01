@@ -20,6 +20,9 @@ button:focus,
 button:active,
 button:hover,
 label:focus,
+select:active,
+select:hover,
+select:focus,
 .btn:active,
 .btn.active
 {
@@ -70,6 +73,11 @@ label:focus,
 .dropdown-menu{
    --bs-bg-opacity: .9;
    background-color: rgba(255, 255, 255, var(--bs-bg-opacity)) !important;
+}
+
+#cat-dropdown {
+	max-height: 300px;
+	overflow-y: scroll;
 }
 
 ul > .nav-link:hover{

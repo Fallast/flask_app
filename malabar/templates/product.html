@@ -1,13 +1,42 @@
 {%extends "layout.html"%}
 
 {%block content%}
-<div class="row mt-2">
-   <div class="col-lg-7 my-lg-0 mx-lg-2 my-2 border">
+<div class="row mt-2 pb-5">
+   <div class="col-lg-7 my-lg-0 mx-lg-2 my-2">
       <img class="img-fluid" src="{{url_for('static', filename='product_pics/' + thumbnail)}}" alt="">
    </div>
-   <div class="col-lg border">
-      <h3 class="my-3 text-muted">{{title}}</h3>
-      <h4 class="my-3 text-muted">{{descriptions}}</h4>
-   </div>
+   <div class="col-lg ">
+      <div class="container border pb-2">
+         <h3 class="my-3 text-muted">{{title}}</h3>
+         <div class="lead" style="height:120px">{{descriptions}}</div>
+			<div id="prod_option" class="input-group input-group-lg">
+				<select class="form-select" style="max-width:91px" >
+					{%for x in range(quantity)%}
+					<option>{{x+1}}</option>
+					{%endfor%}
+				</select>
+					<button class="btn btn btn-success ">Comprar</button>
+					<button class="btn btn btn-secondary ">+ Al Carrito</button>
+			</div>
+		</div>
+	</div>
 </div>
-{%endblock content%}
+<script>
+	if($(window).width()<1188){
+			$("#prod_option").removeClass("input-group-lg")
+		}
+	else{
+			$("#prod_option").addClass("input-group-lg")
+		}
+	
+	$(window).on('resize', function(){
+			if($(window).width()<1188){
+					$("#prod_option").removeClass("input-group-lg")
+				}
+			else{
+					$("#prod_option").addClass("input-group-lg")
+				}
+
+		})
+</script>
+			{%endblock content%}

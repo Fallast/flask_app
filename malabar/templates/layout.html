@@ -13,12 +13,11 @@
 		{%else%}
 		<title>Malabar</title>
 		{%endif%}
-		<link rel="icon" href="{{url_for('static', filename='bsd.png')}}">
+		<link rel="icon" href="{{url_for('static', filename='bsd_small.png')}}">
 		<script type="text/javascript" src="{{url_for('static', filename='navscroll.js')}}"></script>
 
 	</head>
 	<body>
-
 		<div class="container">
 			<nav class="autohide navbar fixed-top navbar-expand-md navbar-light border-bottom bg-white">
 				<div class="container-fluid align-items-start">
@@ -34,7 +33,7 @@
 									  	role="button" data-bs-toggle="dropdown" aria-expanded="false">
 										Todo
 									</a>
-									<ul class="cat dropdown-menu m-2 overflow-auto" aria-labelledby="navbarDropdown">
+									<ul id="cat-dropdown"class="cat dropdown-menu m-2 overflow-auto" aria-labelledby="navbarDropdown">
 										<li><a class="dropdown-item" href="#">Todo</a></li>
 										<li><hr class="dropdown-divider"></li>
 										<li><a class="dropdown-item" href="#">Skate</a></li>
