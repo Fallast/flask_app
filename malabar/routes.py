@@ -9,6 +9,10 @@ from malabar import (
 from malabar.models import (
         User,
         Product,
+        Cart_product,
+        Bought_product,
+        Shipping_product,
+        Shipped_product,
         ProductSchema
         )
 
@@ -72,16 +76,30 @@ def load():
     if request.args:
         counter = int(request.args.get("c"))
 
-@app.route("/product/<item>")
+@app.route("/product/<item>", methods=["GET", "POST"])
 def product(item):
     product = Product.query.filter_by(id=item).first()
     title = product.title
     price = product.price
-    thumbnail = product.thumbnail
+    image = product.image
     quantity = product.quantity
     descriptions = product.descriptions
+    if request.method == "POST":
+        if current_user.is_authenticated:
+            cantidad = int(request.form["cantidad"])
+            if quantity >= cantidad:
+                # cp == cart_product
+                cp = Cart_product(user=current_user, prod=product, quantity=cantidad)
+                # esto va en una ruta que genera la compra
+                # product.quantity = quantity - cantidad
+                db.session.commit()
+                return redirect(url_for('home'))
+            else:
+                flash(f'Esa cantidad ya no esta disponible, intentalo de nuevo', 'danger')
+        else:
+            flash(f'Inicia sesion para eso', 'danger')
     return render_template('product.html', title=title, price=price,
-            thumbnail=thumbnail, quantity=quantity, descriptions=descriptions)
+            image=image, quantity=quantity, descriptions=descriptions)
 
 @app.route('/_add_numbers')
 def add_numbers():
@@ -136,6 +154,16 @@ def login():
         else:
             flash('Chequea el correo o la contraseña','danger')
     return render_template('login.html', title="Login", form=form)
+
+@app.route("/carrito", methods=["GET", "POST"])
+def carrito():
+    if request.method == "POST":
+        id_a_borrar = int(request.form["borrar"])
+        db.session.delete(Cart_product.query.filter_by(id=id_a_borrar).first())
+        db.session.commit()
+        if len(current_user.cart_products) == 0:
+            return redirect(url_for('home'))
+    return render_template('carrito.html', title='Carrito')
 
 @app.route("/account", methods=["GET","POST"])
 @login_required

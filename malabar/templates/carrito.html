@@ -1,0 +1,40 @@
+{%extends 'layout.html'%}
+
+{%block content%}
+<div class="row">
+   <div class="col-lg-7">
+      {%if current_user.cart_products | length == 0%}
+      <h2>no agregaste nada al chango bro</h2>
+      {%else%}
+      {%for x in current_user.cart_products%}
+      <div class="card mb-3" style="max-width:600px">
+         <div class="card-img-top d-flex align-items-center bg-light">
+            <div>
+               <img src="{{url_for('static', filename='product_pics_cart/' + x.prod.image)}}" alt="">
+            </div>
+            <div class="container">
+               <h6 class="m-0 px-3">{{x.prod.title}}</h6>
+            </div>
+            <div class="container text-center border mx-2" style="max-width:150px; height:80px">
+               <form action="#" method="post">
+                  <button type="submit" name="borrar" value={{x.id}} class="btn btn-outline-danger mt-2">
+                     Eliminar<i class="bi bi-x"></i>
+                  </button>
+               </form>
+               {%if x.quantity > 1%}
+               <span class="badge bg-secondary mt-1">llevas
+                  {{x.quantity}} unidades</span>
+               {%else%}
+               <span class="badge bg-secondary mt-1">llevas
+                  {{x.quantity}} unidad</span>
+               {%endif%}
+
+            </div>
+         </div>
+         {%endfor%}
+         {%endif%}
+      </div>
+   </div>
+</div>
+
+{%endblock%}

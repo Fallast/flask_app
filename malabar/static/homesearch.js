@@ -77,7 +77,7 @@ $(function(){
          clearSearch();
       else
          data.forEach(e =>{
-            if(e.categories.includes(filter) || filter == 'todo')
+            if(e.categories.includes(filter))
                e.col.style.display = "block";
             else
                e.col.style.display = "none";
