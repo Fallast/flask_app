@@ -2,7 +2,7 @@
 
 {%block content%}
 <div class="row">
-   <div class="col-lg-7">
+   <div class="col-lg-7 border pt-3 scroller" style="overflow-y: scroll; height: 34vw;">
       {%if current_user.cart_products | length == 0%}
       <h2>no agregaste nada al chango bro</h2>
       {%else%}
@@ -31,9 +31,12 @@
 
             </div>
          </div>
+      </div>
          {%endfor%}
          {%endif%}
-      </div>
+   </div>
+   <div class="col-lg-5 overflow-hidden">
+      <img height="400px"src="https://helpx.adobe.com/content/dam/help/en/stock/how-to/visual-reverse-image-search/jcr_content/main-pars/image/visual-reverse-image-search-v2_intro.jpg" alt="">
    </div>
 </div>
 

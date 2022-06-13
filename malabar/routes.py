@@ -69,13 +69,6 @@ def search():
 
 
 
-@app.route("/load")
-def load():
-    time.sleep(0.3)
-
-    if request.args:
-        counter = int(request.args.get("c"))
-
 @app.route("/product/<item>", methods=["GET", "POST"])
 def product(item):
     product = Product.query.filter_by(id=item).first()
@@ -181,8 +174,3 @@ def account():
 def logout():
     logout_user()
     return redirect(url_for('home'))
-
-# print(app.root_path)
-
-# @app.route("/chart")
-# def chart():

@@ -1,3 +1,25 @@
+<div class="cardsContainer" id="cards-container">
+
+.scroller::-webkit-scrollbar {
+    width: 8px;
+    background-color: #F5F5F5;
+}
+
+
+.scroller::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(104, 140, 240, 0.3);
+  }
+
+.scroller::-webkit-scrollbar-thumb {
+    background-color: lightblue;
+    outline: 1px solid slategrey;
+}
+
+@font-face {
+   font-family:"FubuFont";
+   src: url("fubufont/PhatBoy Slim.otf")format("opentype");
+}
+
 root { scroll-behavior: auto;  }
 .scrolled-down{
      transform:translateY(-100%); transition: all 0.3s ease-in-out;
@@ -49,6 +71,17 @@ select:focus,
 	/*-o-transition: background-color 0.5s ease-out;*/
 	/*transition: background-color 0.5s ease-out;*/
 }
+
+.product-title {  text-decoration: none;
+   font-family: 'Athiti', sans-serif;
+   font-size:large;
+   /*font-family:FubuFont;*/
+   /*font-size:10px;*/
+   font-family: 'Donegal One', serif;
+   font-size:15px;
+}
+
+.product-title:hover { color: #1c1c1c; text-decoration: underline;  }
 
 .navbar{
    --bs-bg-opacity: .89;
